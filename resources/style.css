@@ -1,0 +1,12 @@
+.pages{
+    list-style: none;
+}
+.pages li{
+    display: inline-block;
+}
+.nonactive{
+    text-decoration: none;
+}
+.active{
+    font-weight: bold;
+}
