@@ -3,5 +3,6 @@ return [
   ""=>"main@index",
   "check"=>"main@check",
   "login"=>"main@login",
-  "newuser"=>"main@newuser"
+  "newuser"=>"main@newuser",
+  "logout"=>"main@logout"
 ];

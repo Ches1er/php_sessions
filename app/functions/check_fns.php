@@ -12,24 +12,26 @@ function saveData($users){
 function auth_isAuth(){
     $users = getUsers();
     foreach ($users as $user){
-        if ($user["id"]==@$_SESSION["id"])return true;
-        else return false;
+        if ($user["id"]==@$_SESSION["id"])return $user["name"];
     }
+    return "No active users";
 }
 
-function auth_login($name){
+function auth_login($name,$password){
     $users=getUsers();
     foreach ($users as $user){
-        if ($user["name"]==$name){
+        if ($user["name"] == $name && $user["password"] == $password) {
             $_SESSION["id"]=$user["id"];
         }
     }
 }
 
-function auth_getUser(){
+function auth_addUser($name,$password){
     $users = getUsers();
-    foreach ($users as $user){
-        if ($user["id"]==@$_SESSION["id"]) return $user["name"];
-        else return "No active users";
-    }
+    $new_user=[];
+    $new_user["id"]=time();
+    $new_user["name"]=$name;
+    $new_user["password"]=$password;
+    $users[]=$new_user;
+    saveData($users);
 }

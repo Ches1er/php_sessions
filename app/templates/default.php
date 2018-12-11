@@ -9,6 +9,8 @@
     <title><?=$title?></title>
 </head>
 <body>
-<?=$content?>
+    <section>
+        <?=$content?>
+    </section>
 </body>
 </html>

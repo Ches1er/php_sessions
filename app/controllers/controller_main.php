@@ -8,7 +8,6 @@ function action_index(){
     $data=[
         "title"=>"Main",
         "auth"=>auth_isAuth(),
-        "active_user"=>auth_getUser()
     ];
     echo getViewWTempate("template","main",$data);
 }
@@ -16,10 +15,23 @@ function action_index(){
 function action_login(){
     session_start();
     $name = $_POST["name"];
-    auth_login($name);
+    $password = $_POST["password"];
+    auth_login($name,$password);
     header("Location:/");
     return "";
 }
 
+function action_logout(){
+    session_start();
+    session_destroy();
+    header("Location:/");
+    return "";
+}
 
-
+function action_newuser(){
+    $new_name = $_POST["new_name"];
+    $new_password = $_POST["new_password"];
+    auth_addUser($new_name,$new_password);
+    header("Location:/");
+    return "";
+}
