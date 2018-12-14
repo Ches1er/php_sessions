@@ -32,3 +32,15 @@ input{
     padding: 5px;
     border: 1px solid grey;
 }
+.error{
+    color: red;
+    font-weight: bold;
+}
+
+ul{
+    list-style: none;
+}
+ul li a{
+    display: inline-block;
+    text-decoration: none;
+}

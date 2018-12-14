@@ -11,5 +11,5 @@ define("DATAFILE",APPPATH."/data/");
 define("NUMBER",20);
 
 include ROOTPATH."routing.php";
-
-print_r(navigate()) ;
+_get_funcs();
+echo (navigate()) ;

@@ -1,8 +1,10 @@
 <?php
 return [
   ""=>"main@index",
-  "check"=>"main@check",
-  "login"=>"main@login",
-  "newuser"=>"main@newuser",
-  "logout"=>"main@logout"
+  "contacts"=>"main@contacts",
+  "login"=>"auth@login",
+  "login_handle"=>"auth@login_handle",
+  "signup_handle"=>"auth@signup_handle",
+  "signup"=>"auth@signup",
+  "logout"=>"auth@logout"
 ];

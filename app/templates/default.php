@@ -9,8 +9,14 @@
     <title><?=$title?></title>
 </head>
 <body>
-    <section>
-        <?=$content?>
-    </section>
+<nav>
+    <ul>
+        <li><a href="/">Main</a></li>
+        <li><a href="/contacts">Contacts</a></li>
+    </ul>
+</nav>
+<section>
+   <?=$content?>
+</section>
 </body>
 </html>
