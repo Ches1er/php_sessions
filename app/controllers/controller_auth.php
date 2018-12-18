@@ -24,6 +24,10 @@ function _errors_($error_code,$redirectPath){
             $_SESSION["error"]="No such user, sign up please";
             _redirect_($redirectPath);
             break;
+        case "this user name is engaged":
+            $_SESSION["error"]="this user name is engaged";
+            _redirect_($redirectPath);
+            break;
     }
 }
 
@@ -70,6 +74,9 @@ function action_signup_handle(){
     }
     else if ($_POST["password"]!==$_POST["password_confirm"]){
         _errors_("non equal password","/signup");
+    }
+    else if (!auth_addUser($_POST["name"],$_POST["password"])){
+        _errors_("this user name is engaged","/signup");
     }
     else {
         auth_addUser($_POST["name"],$_POST["password"]);

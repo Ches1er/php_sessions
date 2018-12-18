@@ -11,5 +11,15 @@ define("DATAFILE",APPPATH."/data/");
 define("NUMBER",20);
 
 include ROOTPATH."routing.php";
-_get_funcs();
+/*$records=[];
+$cat1=[
+    "office"=>"ascascas",
+    "power"=>"hescasca"
+];
+$records["ivan"]=$cat1;
+$records["petro"]=[];
+foreach ($records as $key=>$value){
+    echo $key;
+}*/
+get_funcs();
 echo (navigate()) ;

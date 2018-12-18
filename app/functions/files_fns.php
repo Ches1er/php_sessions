@@ -13,3 +13,16 @@ function getDataById($data,$id){
         if ($dataUnit["id"]==$id) return $dataUnit;
     }
 }
+
+function appendData($new_data,$data_file){
+    $current_data = getData($data_file);
+    $current_data[]=$new_data;
+    saveData($current_data,$data_file);
+}
+
+function delData($id,$data_file){
+    $current_data = getData($data_file);
+    return array_filter($current_data,function ($elem)use($id){
+        return $elem["id"]!=$id;
+    });
+}

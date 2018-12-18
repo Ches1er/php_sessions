@@ -1,5 +1,21 @@
 <?php
 
+function _auth_hash_pass($password){
+    return hash("sha256",$password);
+}
+
+function _auth_get_user_by_name($name){
+    $users = getData("users");
+    foreach ($users as $user){
+        if ($user["name"]===$name)return $user;
+    }
+    return NULL;
+}
+
+function currentUser(){
+    return getDataById(getData("users"),$_SESSION["id"])["name"];
+}
+
 function auth_isAuth(){
     session_start();
     $users = getData("users");
@@ -14,8 +30,9 @@ function auth_isAuth(){
 function auth_login($user){
     $users=getData("users");
     foreach ($users as $u){
-        if ($u["name"] == $user["login"] && $u["password"] == $user["password"]) {
+        if ($u["name"] == $user["login"] && $u["password"] === _auth_hash_pass($user["password"])) {
             $_SESSION["id"]=$u["id"];
+            $_SESSION["agent"]=md5($_SERVER["HTTP_USER_AGENT"]);
             return true;
         }
     }
@@ -23,11 +40,16 @@ function auth_login($user){
 }
 
 function auth_addUser($name,$password){
-    $users=getData("users");
-    $new_user=[];
-    $new_user["id"]=time();
-    $new_user["name"]=$name;
-    $new_user["password"]=$password;
-    $users[]=$new_user;
-    saveData($users,"users");
+    if (_auth_get_user_by_name($name)!==NULL)return false;
+    $new_user=[
+        "id"=>time(),
+        "name"=>$name,
+        "password"=>_auth_hash_pass($password)
+    ];
+    appendData($new_user,"users");
+    $records=[
+        "user"=>$name
+    ];
+    appendData($records,"records");
+    return true;
 }

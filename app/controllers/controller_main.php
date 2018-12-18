@@ -4,7 +4,7 @@ function action_index(){
     session_start();
     $data=[
         "title"=>"Main",
-        "currentUser"=>getDataById(getData("users"),$_SESSION["id"])["name"],
+        "currentUser"=>currentUser(),
     ];
     echo getViewWTempate("template","main",$data);
 }

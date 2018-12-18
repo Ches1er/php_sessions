@@ -3,5 +3,5 @@
     //Array w functions files;
 
 return [
-    "auth","view","files"
+    "auth","view","files","records"
 ];

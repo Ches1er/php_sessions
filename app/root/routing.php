@@ -1,6 +1,6 @@
 <?php
 
-function _get_funcs(){
+function get_funcs(){
     $funcs_array=include ROOTPATH."func_config.php";
     foreach ($funcs_array as $func){
         include FUNC."{$func}_fns.php";
